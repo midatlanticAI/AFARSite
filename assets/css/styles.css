@@ -1476,19 +1476,30 @@ body {
         display: flex;
     }
 
-    /* Reposition logo and contact info */
+    /* Compact header-horizontal on mobile */
     .logo {
-        height: 60px;
+        height: 50px;
+    }
+
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
     }
 
     .header-content .contact-info {
         position: static;
         transform: none;
-        margin-top: 10px;
-        text-align: center;
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .location {
+        font-size: 14px;
     }
 
     .phone-number {
-        font-size: 24px;
+        font-size: 20px;
     }
 } 
