@@ -126,6 +126,7 @@
         <!-- Navigation -->
         <nav class="main-navigation" role="navigation" aria-label="Main navigation">
             <div class="container">
+                <button class="mobile-nav-toggle" aria-label="Toggle menu">☰</button>
                 <ul class="nav-menu">
                     <li><a href="#home" class="active" aria-current="page">🏠 Home</a></li>
                     <li class="has-dropdown">
@@ -546,6 +547,15 @@
                 this.setAttribute('aria-expanded', !expanded);
             });
         });
+
+        // Mobile navigation toggle
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (mobileNavToggle) {
+            mobileNavToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+        }
         
         // Update business hours on page load
         updateBusinessHours();
