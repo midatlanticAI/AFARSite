@@ -1,0 +1,19 @@
+# Ignore node modules and generated files
+node_modules/
+**/node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Build output and temp
+build/
+dist/
+.cache/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+.env
