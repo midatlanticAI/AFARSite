@@ -1445,6 +1445,31 @@ body {
     filter:brightness(1.1);
 }
 
+/* --- Temporarily hide live chat button until feature is ready --- */
+
+/* Hide Load More and Facebook filter buttons on Reviews page */
+#loadMoreBtn,
+#facebookFilter {
+    display: none !important;
+}
+
+/* Under Construction banner styling */
+.under-construction-banner {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #333;
+    text-align: center;
+    font-weight: 700;
+    padding: 20px 10px;
+    font-size: 18px;
+}
+
+/* --- Temporarily hide live chat button until feature is ready --- */
+.chat-launch-button,
+.chatbot-button,
+.chatbot-window {
+    display: none !important;
+}
+
 /* ===== Mobile Navigation Enhancements ===== */
 .mobile-nav-toggle {
     display: none;

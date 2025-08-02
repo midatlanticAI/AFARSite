@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animations
     initAnimations();
+
+    // Force scroll to top when landing on home page without hash
+    if ((location.pathname.endsWith('/') || location.pathname.endsWith('index.html') || location.pathname === '') && !location.hash) {
+        window.scrollTo(0, 0);
+    }
 });
 
 // Navigation Functionality
@@ -138,8 +143,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
+        // Skip nav dropdown toggles
+        if (this.closest('.has-dropdown')) return;
+
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (targetId === '#' || !targetId) return;
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
@@ -305,14 +313,29 @@ function isInViewport(element) {
         const collapseBtn = widget ? widget.querySelector('.widget-collapse') : null;
         if(!widget || !restoreBtn || !collapseBtn) return;
 
-        function collapse(){
-            widget.style.display='none';
-            restoreBtn.style.display='flex';
+        // Persist state using localStorage
+        const KEY = 'helpWidgetState';
+
+        function setState(collapsed){
+            localStorage.setItem(KEY, collapsed ? 'collapsed' : 'open');
+            if(collapsed){
+                widget.style.display='none';
+                restoreBtn.style.display='flex';
+            }else{
+                widget.style.display='block';
+                restoreBtn.style.display='none';
+            }
         }
-        function restore(){
-            widget.style.display='block';
-            restoreBtn.style.display='none';
+
+        // Apply stored state on load
+        const stored = localStorage.getItem(KEY);
+        if(stored === 'collapsed'){
+            setState(true);
         }
+
+        function collapse(){ setState(true); }
+        function restore(){ setState(false); }
+
         collapseBtn.addEventListener('click', collapse);
         restoreBtn.addEventListener('click', restore);
         restoreBtn.addEventListener('keypress', (e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();restore();}});
