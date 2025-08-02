@@ -1,0 +1,10 @@
+{
+  "reviews": [
+    {"author":"Sarah M.","city":"Fredericksburg","rating":5,"text":"Excellent service! Fixed my refrigerator quickly and professionally. The technician was knowledgeable and explained everything clearly.","date":"2024-01-15"},
+    {"author":"John D.","city":"Stafford","rating":5,"text":"Very reliable and fair pricing. They came the same day I called and had my washer working perfectly. Highly recommend!","date":"2024-01-10"},
+    {"author":"Maria L.","city":"Spotsylvania","rating":5,"text":"Professional, courteous, and efficient. They diagnosed and fixed my dishwasher issue in under an hour. Great warranty too!","date":"2024-01-05"},
+    {"author":"Michael K.","city":"King George","rating":4,"text":"Quick response and friendly staff. My oven is working perfectly again.","date":"2024-01-03"},
+    {"author":"Ashley P.","city":"Fredericksburg","rating":5,"text":"Impressed with their same-day service. Technician was very knowledgeable.","date":"2024-01-02"},
+    {"author":"David S.","city":"Stafford","rating":5,"text":"Great experience from start to finish. Fair pricing and quality work.","date":"2023-12-29"}
+  ]
+} 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Homepage -->
+    <url>
+        <loc>https://www.allfixedappliance.com/</loc>
+    </url>
+
+    <!-- Service Pages -->
+    <url>
+        <loc>https://www.allfixedappliance.com/refrigerator-repair.html</loc>
+    </url>
+    <url>
+        <loc>https://www.allfixedappliance.com/stove-oven-repair.html</loc>
+    </url>
+    <url>
+        <loc>https://www.allfixedappliance.com/washer-dryer-repair.html</loc>
+    </url>
+    <url>
+        <loc>https://www.allfixedappliance.com/dishwasher-repair.html</loc>
+    </url>
+    <url>
+        <loc>https://www.allfixedappliance.com/microwave-repair.html</loc>
+    </url>
+
+    <!-- Reviews Page -->
+    <url>
+        <loc>https://www.allfixedappliance.com/reviews.html</loc>
+    </url>
+</urlset> 

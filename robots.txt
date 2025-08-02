@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://www.allfixedappliance.com/sitemap.xml 
+Disallow: /provider 
