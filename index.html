@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>All Fixed Appliance Repair LLC - Professional Appliance Repair Services in Fredericksburg, VA</title>
-    <meta name="description" content="Expert appliance repair services in Fredericksburg, VA. We repair refrigerators, washers, dryers, dishwashers, ovens, and microwaves. 30-day labor warranty, 90-day parts warranty. Same-day service available. Call +1 (540) 441-4349.">
+    <title>Appliance Repair Fredericksburg VA | All Fixed Appliance Repair</title>
+    <meta name="description" content="Need reliable appliance repair in Fredericksburg, VA? Same-day refrigerator, washer, dryer, oven & dishwasher service. Call our certified technicians today.">
     <meta name="keywords" content="appliance repair, Fredericksburg VA, refrigerator repair, washer repair, dryer repair, dishwasher repair, oven repair, microwave repair, same day service">
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -78,6 +78,14 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
@@ -109,7 +117,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo-section">
-                        <img src="assets/images/company_logo.png" alt="All Fixed Appliance Repair LLC logo" class="logo" width="200" height="80">
+                        <img loading="lazy" src="assets/images/company_logo.png" alt="All Fixed Appliance Repair LLC logo" class="logo" width="200" height="80">
                     </div>
                     <div class="contact-info" itemscope itemtype="https://schema.org/LocalBusiness">
                         <div class="location" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
@@ -336,26 +344,14 @@
                     <div class="video-content">
                         <h2 id="video-heading" class="video-title1">NEED SERVICE NOW?</h2>
                         <p class="video-title2">Check out our new AI powered Appliance Triage Center now!</p>
-                        <div class="play-icon">
-                            <div class="construction-zone" aria-label="Triage Center under construction">
-                                <div class="construction-tape construction-tape-top"></div>
-                                <div class="construction-content">
-                                    <div class="construction-icon">🚧</div>
-                                    <h3 class="construction-title">Under Construction</h3>
-                                    <p class="construction-text">Our AI-powered Appliance Triage Center is coming soon!</p>
-                                    <div class="construction-details">
-                                        <span class="construction-emoji">⚠️</span>
-                                        <span>Please check back soon</span>
-                                        <span class="construction-emoji">🔧</span>
-                                    </div>
-                                </div>
-                                <div class="construction-tape construction-tape-bottom"></div>
-                            </div>
+                        <div class="play-icon" id="triage-mount" aria-label="AI Triage Center" style="cursor:pointer;">
+                          <div id="triage-embed" style="max-width:720px;margin:0 auto;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
@@ -455,6 +451,19 @@
                         © <span id="currentYear">2025</span> All Fixed Appliance Repair LLC. All rights reserved. 
                         Licensed and insured appliance repair services in Fredericksburg, VA.
                     </div>
+                    <div style="margin-top:10px;font-size:12px;opacity:.85;">
+                        <a href="http://localhost:5173/provider/dashboard" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">Staff Login</a>
+                        <a href="http://localhost:5173/login?role=technician" rel="nofollow" style="color:#FFD700; text-decoration:none;">Technician Login</a>
+                        <span style="display:inline-block; margin:0 8px; color:#FFD700;">|</span>
+                        <a href="http://localhost:5173/profile" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">MyAppliance</a>
+                        <a href="http://localhost:5173/profile/appliances" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">MyAppliance – Appliances</a>
+                        <a href="http://localhost:5173/provider/voicepro" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">VoicePro (Provider)</a>
+                        <a href="http://127.0.0.1:8001/voicepro/voicepro/logs" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">VoicePro Dashboard</a>
+                        <a href="http://localhost:5173/technician" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">Technician (Adapter)</a>
+                        <a href="http://localhost:5173/technician-login" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">Technician Login (Adapter)</a>
+                        <a href="http://localhost:5173/myappliance-home" rel="nofollow" style="color:#FFD700; text-decoration:none; margin-right:12px;">MyAppliance Home (Adapter)</a>
+                        <a href="http://localhost:5173/myappliance-home-corporate" rel="nofollow" style="color:#FFD700; text-decoration:none;">Corporate Home (Adapter)</a>
+                    </div>
                     <p class="ai-disclaimer">⚠️ This site uses AI-assisted content which may contain inaccuracies. Always verify instructions and prioritize safety. Opt-out of data usage or request corrections by emailing <a href="mailto:privacy@allfixedappliance.com">privacy@allfixedappliance.com</a>.</p>
                 </div>
             </div>
@@ -486,7 +495,12 @@
     <div class="sidebar-contact-restore" role="button" aria-label="Open help widget">❓</div>
 
     <!-- JavaScript -->
+    <script>
+      window.CHAT_API = 'http://127.0.0.1:8001';
+      window.TRIAGE_API = 'http://127.0.0.1:8001';
+    </script>
     <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/widget-triage.js"></script>
     <script>
         // Set current year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -570,6 +584,21 @@
                 // Add your analytics tracking here
             });
         });
+
+        // Embed triage widget directly
+        (function(){
+            const container = document.getElementById('triage-embed');
+            if(window.TriageWidget && container){ window.TriageWidget.embed(container); }
+            const mount = document.getElementById('triage-mount');
+            if(mount){
+              mount.setAttribute('tabindex','0');
+              // Only trigger when the mount itself is focused, and only on Enter
+              mount.addEventListener('keydown', function(e){
+                if (e.target !== mount) return;
+                if (e.key === 'Enter') { e.preventDefault(); window.TriageWidget && window.TriageWidget.open(); }
+              });
+            }
+        })();
     </script>
 </body>
 </html>

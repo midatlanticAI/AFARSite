@@ -1,11 +1,11 @@
 // Main JavaScript for All Fixed Appliance Repair Website
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Disable chat until ready
+    // Hook chat launch button to open onsite ChatWidget
     document.querySelectorAll('.chat-launch-button').forEach(btn => {
         btn.addEventListener('click', e => {
             e.preventDefault();
-            alert('Pardon our dust — live chat is still under construction.');
+            window.ChatWidget && window.ChatWidget.open();
         });
     });
 
@@ -175,6 +175,8 @@ function isInViewport(element) {
 // =========================
 (function() {
     function initChatbot() {
+        const CHAT_API = (window.CHAT_API || 'http://127.0.0.1:8000');
+        let chatSessionId = null;
         // Identify a launcher: prefer the sidebar live-chat button if it exists
         let chatLauncher = document.querySelector('.chat-launch-button');
         const hasCustomLauncher = !!chatLauncher;
@@ -222,17 +224,39 @@ function isInViewport(element) {
             messages.scrollTop = messages.scrollHeight;
         }
 
-        function botReply(userText) {
-            const txt = userText.toLowerCase();
-            let reply = 'Thank you for reaching out! For urgent issues, please call us at (540) 208-2627.';
-            if (txt.includes('hello') || txt.includes('hi') || txt.includes('hey')) {
-                reply = BOT_GREET;
-            } else if (txt.includes('hours') || txt.includes('open')) {
-                reply = 'We are open Monday–Friday, 8:00 AM–5:00 PM. How can we help?';
-            } else if (txt.includes('price') || txt.includes('cost')) {
-                reply = 'Diagnostics are $90 (waived if we complete the repair). We provide a quote before any work.';
+        async function ensureChatSession(){
+            if (chatSessionId) return chatSessionId;
+            try {
+                const res = await fetch(`${CHAT_API}/api/v1/chat/sessions`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Idempotency-Key': (crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()))
+                    },
+                    body: JSON.stringify({ source: 'widget' })
+                });
+                const data = await res.json();
+                chatSessionId = data.session_id;
+                return chatSessionId;
+            } catch (e) {
+                // fallback: no session
+                chatSessionId = null;
+                return null;
             }
-            setTimeout(() => addMessage(reply), 600);
+        }
+
+        async function sendToBackend(userText){
+            const sid = await ensureChatSession();
+            if (!sid) return null;
+            const res = await fetch(`${CHAT_API}/api/v1/chat/messages`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Idempotency-Key': (crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()))
+                },
+                body: JSON.stringify({ session_id: sid, text: userText })
+            });
+            return await res.json();
         }
 
         function handleSend() {
@@ -240,7 +264,19 @@ function isInViewport(element) {
             if (!text) return;
             addMessage(text, true);
             input.value = '';
-            botReply(text);
+            sendToBackend(text)
+                .then(data => {
+                    const msgs = (data && data.messages) || [];
+                    if (msgs.length) {
+                        msgs.forEach(m => addMessage(m.text || m.value || ''));
+                    } else {
+                        addMessage('Thanks! A specialist will follow up shortly.');
+                    }
+                })
+                .catch(() => {
+                    // Fallback local reply
+                    addMessage('Thanks! A specialist will follow up shortly.');
+                });
         }
 
         function openChat(e) {
@@ -250,6 +286,8 @@ function isInViewport(element) {
             messages.innerHTML = '';
             addMessage(BOT_GREET);
             input.focus();
+            // lazy-init session
+            ensureChatSession();
         }
 
         function closeChat() {
@@ -267,6 +305,12 @@ function isInViewport(element) {
                 handleSend();
             }
         });
+
+        // Expose controls for external launchers
+        window.ChatWidget = {
+            open: openChat,
+            close: closeChat
+        };
     }
 
     if (document.readyState === 'loading') {

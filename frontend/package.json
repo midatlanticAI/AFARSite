@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
+    "@mui/x-data-grid": "^8.10.0",
     "axios": "^1.6.8",
     "i18next": "^23.10.1",
     "jwt-decode": "^4.0.0",
@@ -28,4 +29,4 @@
     "typescript": "^5.4.2",
     "vite": "^5.2.0"
   }
-} 
+}

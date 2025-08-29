@@ -3,7 +3,7 @@ from __future__ import annotations
 from sitepro.services.db import get_db
 from sitepro.models.database import JobNote
 
-VALID_STATUSES = {"scheduled", "en-route", "completed", "cancelled"}
+VALID_STATUSES = {"created", "scheduled", "en-route", "in_progress", "on_hold", "completed", "cancelled"}
 
 
 async def update_job_status(job_id: str, status: str, note: str | None = None) -> dict:

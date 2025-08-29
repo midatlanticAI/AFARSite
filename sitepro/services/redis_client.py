@@ -35,6 +35,8 @@ class _MemoryRedisStub:
 @lru_cache(maxsize=1)
 def get_redis():
     settings = get_settings()
+    if settings.redis_uri.startswith("memory://"):
+        return _MemoryRedisStub()
     if aioredis is None:
         return _MemoryRedisStub()
     return aioredis.from_url(settings.redis_uri, decode_responses=True) 

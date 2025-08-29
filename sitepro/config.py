@@ -1,5 +1,6 @@
 from functools import lru_cache
-from pydantic import BaseSettings, Field, SecretStr
+from pydantic_settings import BaseSettings
+from pydantic import Field, SecretStr
 
 
 class Settings(BaseSettings):
@@ -18,9 +19,16 @@ class Settings(BaseSettings):
     # OAuth / JWT
     jwt_secret: SecretStr = Field("CHANGE_ME", env="JWT_SECRET")
 
+    # External tool integrations (optional)
+    voicepro_base_url: str = Field("", env="VOICEPRO_BASE_URL")
+    voicepro_safe_mode: bool = Field(True, env="VOICEPRO_SAFE_MODE")
+    chatpro_base_url: str = Field("", env="CHATPRO_BASE_URL")
+    repairpro_base_url: str = Field("", env="REPAIRPRO_BASE_URL")
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+        extra = "ignore"
 
 
 @lru_cache(maxsize=1)

@@ -688,18 +688,20 @@ body {
 }
 
 .video-title1 {
-    font-size: 24px;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 10px;
-    font-weight: 400;
+    font-size: 26px;
+    color: #FFD700;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .video-title2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 40px;
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 28px;
     font-family: 'Poppins', Arial, sans-serif;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.35);
 }
 
 .play-button {
@@ -1463,12 +1465,7 @@ body {
     font-size: 18px;
 }
 
-/* --- Temporarily hide live chat button until feature is ready --- */
-.chat-launch-button,
-.chatbot-button,
-.chatbot-window {
-    display: none !important;
-}
+/* Live chat uses JS to toggle visibility; no forced overrides here */
 
 /* ===== Mobile Navigation Enhancements ===== */
 .mobile-nav-toggle {
